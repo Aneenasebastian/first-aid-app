@@ -1,3 +1,4 @@
+import './App.css'
 import React, { useState, useRef } from "react";
 
 // 🔊 Speak text aloud (supports Hindi + English)
@@ -96,7 +97,11 @@ export default function FirstAidApp() {
     const userMsg = input.trim();
     const botResponse = getFirstAidResponse(userMsg);
 
-    setChat((prev) => [...prev, { sender: "You", text: userMsg }, { sender: "Bot", text: botResponse }]);
+    setChat((prev) => [
+      ...prev,
+      { sender: "You", text: userMsg },
+      { sender: "Bot", text: botResponse },
+    ]);
     speakText(botResponse);
     setInput("");
 
@@ -129,87 +134,53 @@ export default function FirstAidApp() {
   };
 
   return (
-    <div style={{ fontFamily: "Arial, sans-serif", textAlign: "center", padding: "20px" }}>
+    <div className="App">
       {/* Header */}
-      <header style={{ marginBottom: "30px" }}>
+      <header className="App-header">
         <h1>Emergency First-Aid Website</h1>
         <p>Click any emergency to see instructions</p>
       </header>
 
       {/* Buttons */}
       <div>
-        <button onClick={() => showInstructions("heart")}>❤ Heart Attack</button>
-        <button onClick={() => showInstructions("snake")}>🐍 Snake Bite</button>
-        <button onClick={() => showInstructions("accident")}>🚑 Road Accident</button>
-        <a
-          href="tel:108"
-          style={{
-            display: "inline-block",
-            marginLeft: "12px",
-            padding: "10px 18px",
-            background: "#d32f2f",
-            color: "#fff",
-            borderRadius: "6px",
-            textDecoration: "none",
-            fontSize: "16px",
-          }}
-        >
+        <button className="emergency-button heart-attack" onClick={() => showInstructions("heart")}>
+          ❤ Heart Attack
+        </button>
+        <button className="emergency-button snake-bite" onClick={() => showInstructions("snake")}>
+          🐍 Snake Bite
+        </button>
+        <button className="emergency-button road-accident" onClick={() => showInstructions("accident")}>
+          🚑 Road Accident
+        </button>
+        <a href="tel:108" className="emergency-button call-hospital">
           📞 Call Hospital
         </a>
       </div>
 
       {/* Instructions */}
-      <div
-        style={{ marginTop: "30px", fontSize: "20px", color: "#333" }}
-        dangerouslySetInnerHTML={{ __html: instructions }}
-      />
+      <div className="instructions" dangerouslySetInnerHTML={{ __html: instructions }} />
 
       {/* Chatbot */}
-      <div
-        style={{
-          maxWidth: "400px",
-          margin: "32px auto",
-          padding: "16px",
-          border: "1px solid #ccc",
-          borderRadius: "8px",
-          boxShadow: "0 2px 8px #eee",
-          background: "#fafafa",
-        }}
-      >
-        <h2 style={{ textAlign: "center" }}>First Aid Chatbot</h2>
-        <div
-          ref={chatWindowRef}
-          style={{
-            height: "200px",
-            overflowY: "auto",
-            background: "#fff",
-            border: "1px solid #ddd",
-            padding: "8px",
-            marginBottom: "8px",
-            borderRadius: "4px",
-            textAlign: "left",
-          }}
-        >
+      <div className="chatbot-container">
+        <h2>First Aid Chatbot</h2>
+        <div className="chat-window" ref={chatWindowRef}>
           {chat.map((m, i) => (
-            <div key={i} style={{ margin: "8px 0" }}>
+            <div key={i} className="chat-message">
               <strong>{m.sender}:</strong> {m.text}
             </div>
           ))}
         </div>
 
-        <div style={{ display: "flex", gap: "8px" }}>
+        <div className="chat-input">
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Ask your first aid question..."
-            style={{ flex: 1, padding: "8px", borderRadius: "4px", border: "1px solid #ccc" }}
             onKeyDown={(e) => e.key === "Enter" && handleSend()}
           />
           <button onClick={handleSend}>Send</button>
-          <button onClick={handleVoice} title="Speak" style={{ fontSize: "18px" }}>
-            🎤
-          </button>
+          <button onClick={handleVoice} title="Speak">🎤</button>
         </div>
       </div>
     </div>

@@ -1,38 +1,115 @@
+/* 🌟 Main App */
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+  background: linear-gradient(135deg, #23272f 60%, #5ad1ff 100%);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+}
+
+/* 🌟 Header */
+.App-header {
+  background: rgba(35, 39, 47, 0.92);
+  padding: 2rem 3rem;
+  border-radius: 8px;
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.28);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(14px + 2vmin);
+  color: #fff;
+  margin-bottom: 2rem;
+}
+
+.App-header h1 {
+  font-size: 2.5rem;
+  color: #ff4d4d;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* 🌟 Emergency Buttons */
+.emergency-button {
+  margin: 10px;
+  padding: 12px 24px;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.emergency-button:hover {
+  transform: scale(1.05);
+}
+
+.heart-attack {
+  background: #ff4d4d;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.snake-bite {
+  background: #28a745;
+  color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.road-accident {
+  background: #ffc107;
+  color: black;
+}
+
+.call-hospital {
+  background: #d9534f;
+  color: white;
+  font-size: 1.1rem;
+  text-decoration: none;
+  display: inline-block;
+}
+
+
+/* 🌟 Chatbot */
+.chatbot-container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  max-width: 700px;
+  margin: 30px auto;
+}
+
+.chatbot-container h2 {
+  margin-bottom: 12px;
+  color: #23272f;
+}
+
+.chat-window {
+  height: 300px;
+  width :600px;
+  overflow-y: auto;
+  background: #fafafa;
+  border: 1px solid #ddd;
+  padding: 8px;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  text-align: left;
+}
+
+.chat-message {
+  margin: 8px 0;
+}
+
+.chat-input {
+  display: flex;
+  gap: 8px;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
 }
